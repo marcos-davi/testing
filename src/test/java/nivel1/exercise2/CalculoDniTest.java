@@ -1,6 +1,5 @@
 package nivel1.exercise2;
 
-import nivel1.exercise2.CalculoDni;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -17,9 +16,9 @@ class CalculoDniTest {
             "87654321, X",
             "99999999, R",
             "11111111, H",
-            "50000000, K",
-            "33333333, Q",
-            "66666666, J",
+            "50000000, R", // Corregido de K a R
+            "33333333, P", // Corregido de Q a P
+            "66666666, Q", // Corregido de J a Q
             "77777777, B"
     })
     void shouldCalculateCorrectLetterForDniNumbers(int dniNumber, char expectedLetter) {
