@@ -23,4 +23,26 @@ public class Library {
             }
         }
     }
+
+    // Get the title of a book based on its position (index)
+    public String getBookByPosition(int index) {
+        if (index >= 0 && index < books.size()) {
+            return books.get(index);
+        }
+        throw new IndexOutOfBoundsException("Invalid position: " + index);
+    }
+
+    // Add a book at a specific position
+    public void addBookAtPosition(int index, String title) {
+        if (title != null && !title.trim().isEmpty() && !books.contains(title)) {
+            if (index >= 0 && index <= books.size()) {
+                books.add(index, title);
+            }
+        }
+    }
+
+    // Remove a book by its title
+    public void removeBook(String title) {
+        books.remove(title);
+    }
 }
