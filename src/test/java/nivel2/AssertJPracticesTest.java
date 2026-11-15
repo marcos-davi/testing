@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class AssertJPracticesTest {
 
@@ -74,5 +76,23 @@ class AssertJPracticesTest {
 
         // Verify that the map contains one of the added keys
         assertThat(countryCapitals).containsKey("Spain");
+    }
+    // Exercici 6: Exception assertions (verify that a block of code throws a specific exception and message)
+    @Test
+    void shouldAssertExceptions() {
+        assertThatThrownBy(() -> {
+            throw new IllegalArgumentException("Invalid configuration provided");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("Invalid configuration");
+    }
+
+    // Exercici 7: Optional assertions (verify that an Optional is present and contains the expected value)
+    @Test
+    void shouldAssertOptional() {
+        Optional<String> presentOptional = Optional.of("Advanced Assertions");
+
+        assertThat(presentOptional)
+                .isPresent()
+                .hasValue("Advanced Assertions");
     }
 }
