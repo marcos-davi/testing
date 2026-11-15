@@ -1,6 +1,9 @@
 package nivel1.exercise1;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LibraryTest {
@@ -53,5 +56,24 @@ class LibraryTest {
 
         assertEquals(1, library.getBooks().size(), "Collection size should reduce to 1 after removal");
         assertFalse(library.getBooks().contains("Clean Code"));
+    }
+    @Test
+    void shouldReturnAlphabeticallySortedCopyWithoutModifyingOriginal() {
+        Library library = new Library();
+        library.addBook("Effective Java");
+        library.addBook("Clean Code");
+        library.addBook("Algorithms");
+
+        List<String> sortedCopy = library.getSortedBooksAlphabetically();
+
+        // 1. Verify the copy is sorted alphabetically
+        assertEquals("Algorithms", sortedCopy.get(0));
+        assertEquals("Clean Code", sortedCopy.get(1));
+        assertEquals("Effective Java", sortedCopy.get(2));
+
+        // 2. Verify the original insertion order remains unchanged
+        assertEquals("Effective Java", library.getBookByPosition(0));
+        assertEquals("Clean Code", library.getBookByPosition(1));
+        assertEquals("Algorithms", library.getBookByPosition(2));
     }
 }

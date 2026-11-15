@@ -1,6 +1,7 @@
 package nivel1.exercise1;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Library {
@@ -45,4 +46,11 @@ public class Library {
     public void removeBook(String title) {
         books.remove(title);
     }
+    // Return a copy of the list sorted alphabetically without modifying the original collection
+    public List<String> getSortedBooksAlphabetically() {
+        List<String> sortedCopy = new ArrayList<>(this.books);
+        Collections.sort(sortedCopy);
+        return sortedCopy;
+    }
+
 }
